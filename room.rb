@@ -1,6 +1,7 @@
 class Room
 
-  attr_reader :room_name, :capacity, :entry_fee
+  attr_reader :room_name, :capacity
+  attr_accessor :entry_fee
 
   def initialize(room_name, capacity)
     @room_name = room_name
