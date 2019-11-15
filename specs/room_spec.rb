@@ -11,16 +11,18 @@ class RoomTest < MiniTest::Test
   def setup()
     @room1 = Room.new("Power Ballad Booth", 5)
 
-    @guest1 = Guest.new("Ian", 15)
-    @guest2 = Guest.new("Amy", 42)
-    @guest3 = Guest.new("Alistair", 20)
-    @guest4 = Guest.new("Cameron", 50)
-    @guest5 = Guest.new("Adele", 25)
-    @guest6 = Guest.new("Kate", 20)
+    @guest1 = Guest.new("Ian", 15, "We Are The Champions")
+    @guest2 = Guest.new("Amy", 42, "Wind Of Change")
+    @guest3 = Guest.new("Alistair", 20, "Can't Fight This Feeling")
+    @guest4 = Guest.new("Cameron", 50, "Angels")
+    @guest5 = Guest.new("Adele", 25, "Feelin' Good")
+    @guest6 = Guest.new("Kate", 20, "All Out Of Love")
 
     @song1 = Song.new("Don't Stop Believin'", "Journey")
     @song2 = Song.new("We Are The Champions", "Queen")
-    @song3 = Song.new("Alone", "Heart")
+    @song3 = Song.new("Show Me Heaven", "Maria McKee")
+    @song4 = Song.new("Alone", "Heart")
+    @song5 = Song.new("Kayleigh", "Marillion")
   end
 
   def test_can_create_room_and_get_name()
@@ -74,6 +76,16 @@ class RoomTest < MiniTest::Test
   def test_can_add_song_to_playlist()
     @room1.add_song_to_playlist(@song1)
     assert_equal(1, @room1.count_playlist())
+  end
+
+  def test_guest_cheers_when_favourite_song_is_in_playlist()
+    @room1.add_song_to_playlist(@song1)
+    @room1.add_song_to_playlist(@song2)
+    @room1.add_song_to_playlist(@song3)
+    @room1.add_song_to_playlist(@song4)
+    @room1.add_song_to_playlist(@song5)
+    output = @room1.check_in_guest(@guest1)
+    assert_equal("Woohoo!", output)
   end
 
 end

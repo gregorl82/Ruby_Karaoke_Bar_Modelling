@@ -19,6 +19,7 @@ class Room
     if count_guests() < @capacity
       guest.remove_cash(@entry_fee)
       @guests.push(guest)
+      guest.cheer_at_favourite_song(@playlist)
     else
       return "Room full!"
     end
