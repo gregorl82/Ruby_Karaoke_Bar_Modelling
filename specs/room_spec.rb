@@ -79,11 +79,7 @@ class RoomTest < MiniTest::Test
   end
 
   def test_guest_cheers_when_favourite_song_is_in_playlist()
-    @room1.add_song_to_playlist(@song1)
     @room1.add_song_to_playlist(@song2)
-    @room1.add_song_to_playlist(@song3)
-    @room1.add_song_to_playlist(@song4)
-    @room1.add_song_to_playlist(@song5)
     output = @room1.check_in_guest(@guest1)
     assert_equal("Woohoo!", output)
   end
