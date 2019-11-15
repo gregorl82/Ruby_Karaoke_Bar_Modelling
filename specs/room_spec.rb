@@ -11,12 +11,12 @@ class RoomTest < MiniTest::Test
   def setup()
     @room1 = Room.new("Power Ballad Booth", 5)
 
-    @guest1 = Guest.new("Ian")
-    @guest2 = Guest.new("Amy")
-    @guest3 = Guest.new("Alistair")
-    @guest4 = Guest.new("Cameron")
-    @guest5 = Guest.new("Adele")
-    @guest6 = Guest.new("Kate")
+    @guest1 = Guest.new("Ian", 15)
+    @guest2 = Guest.new("Amy", 42)
+    @guest3 = Guest.new("Alistair", 20)
+    @guest4 = Guest.new("Cameron", 50)
+    @guest5 = Guest.new("Adele", 25)
+    @guest6 = Guest.new("Kate", 20)
 
     @song1 = Song.new("Don't Stop Believin'", "Journey")
     @song2 = Song.new("We Are The Champions", "Queen")
@@ -39,9 +39,14 @@ class RoomTest < MiniTest::Test
     assert_equal(5, @room1.capacity)
   end
 
+  def test_can_get_entry_fee()
+    assert_equal(3, @room1.entry_fee)
+  end
+
   def test_can_check_guest_into_room()
     @room1.check_in_guest(@guest1)
     assert_equal(1, @room1.count_guests())
+    assert_equal(12, @guest1.cash)
   end
 
   def test_can_check_guest_into_room__too_many_guests()

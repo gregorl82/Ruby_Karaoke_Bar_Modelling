@@ -7,4 +7,8 @@ class Guest
     @cash = cash
   end
 
+  def remove_cash(amount)
+    @cash -= amount
+  end
+
 end
