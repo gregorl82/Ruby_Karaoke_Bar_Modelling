@@ -27,4 +27,14 @@ class GuestTest < MiniTest::Test
     assert_equal(27, @guest.cash)
   end
 
+  def test_cheer_at_favourite_song()
+    output = @guest.cheer_at_favourite_song("Rollin In The Deep")
+    assert_equal("Woohoo!", output)
+  end
+
+  def test_cheer_at_favourite_song__wrong_song()
+    output = @guest.cheer_at_favourite_song("In The Air Tonight")
+    assert_nil(output)
+  end
+
 end

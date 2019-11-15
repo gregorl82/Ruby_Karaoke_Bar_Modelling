@@ -12,4 +12,10 @@ class Guest
     @cash -= amount
   end
 
+  def cheer_at_favourite_song(song_name)
+    if (@favourite_song == song_name)
+      return "Woohoo!"
+    end
+  end
+
 end
