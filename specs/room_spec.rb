@@ -10,7 +10,8 @@ class RoomTest < MiniTest::Test
   def setup()
     @room1 = Room.new("Power Ballad Booth")
 
-    @guest = Guest.new("Ian")
+    @guest1 = Guest.new("Ian")
+    @guest2 = Guest.new("Amy")
   end
 
   def test_can_create_room_and_get_name()
@@ -19,6 +20,18 @@ class RoomTest < MiniTest::Test
 
   def test_guest_list_is_empty_at_start()
     assert_equal(0, @room1.count_guests())
+  end
+
+  def test_can_check_guest_into_room()
+    @room1.check_in_guest(@guest1)
+    assert_equal(1, @room1.count_guests())
+  end
+
+  def test_can_check_guest_out_of_room()
+    @room1.check_in_guest(@guest1)
+    @room1.check_in_guest(@guest2)
+    @room1.check_out_guest(@guest1)
+    assert_equal(1, @room1.count_guests())
   end
 
 end
