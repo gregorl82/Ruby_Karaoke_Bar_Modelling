@@ -12,6 +12,10 @@ class GuestTest < MiniTest::Test
 
     @song1 = Song.new("Rollin In The Deep", "Adele")
     @song2 = Song.new("In The Air Tonight", "Phil Collins")
+    @song3 = Song.new("Super Trooper", "ABBA")
+
+    @playlist1 = [@song1, @song2]
+    @playlist2 = [@song2, @song3]
   end
 
   def test_can_create_guest_and_get_name()
@@ -32,12 +36,12 @@ class GuestTest < MiniTest::Test
   end
 
   def test_cheer_at_favourite_song()
-    output = @guest.cheer_at_favourite_song(@song1)
+    output = @guest.cheer_at_favourite_song(@playlist1)
     assert_equal("Woohoo!", output)
   end
 
   def test_cheer_at_favourite_song__wrong_song()
-    output = @guest.cheer_at_favourite_song(@song2)
+    output = @guest.cheer_at_favourite_song(@playlist2)
     assert_nil(output)
   end
 

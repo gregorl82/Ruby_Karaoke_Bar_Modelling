@@ -12,10 +12,13 @@ class Guest
     @cash -= amount
   end
 
-  def cheer_at_favourite_song(song)
-    if (@favourite_song == song.title)
-      return "Woohoo!"
+  def cheer_at_favourite_song(playlist)
+    playlist.each do |song|
+      if (@favourite_song == song.title)
+        return "Woohoo!"
+      end
     end
+    return nil
   end
 
 end
