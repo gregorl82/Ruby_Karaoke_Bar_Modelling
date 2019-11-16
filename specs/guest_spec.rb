@@ -30,6 +30,10 @@ class GuestTest < MiniTest::Test
     assert_equal("Rollin In The Deep", @guest.favourite_song)
   end
 
+  def test_guest_tab_is_zero_at_start()
+    assert_equal(0, @guest.tab)
+  end
+
   def test_can_remove_guest_cash()
     @guest.remove_cash(3)
     assert_equal(27, @guest.cash)

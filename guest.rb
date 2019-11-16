@@ -1,11 +1,12 @@
 class Guest
 
-  attr_reader :name, :cash, :favourite_song
+  attr_reader :name, :cash, :favourite_song, :tab
 
   def initialize(name, cash, favourite_song)
     @name = name
     @cash = cash
     @favourite_song = favourite_song
+    @tab = 0
   end
 
   def remove_cash(amount)

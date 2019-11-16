@@ -1,6 +1,6 @@
 class Room
 
-  attr_reader :room_name, :capacity
+  attr_reader :room_name, :capacity, :total_tab
   attr_accessor :entry_fee
 
   def initialize(room_name, capacity)
@@ -9,6 +9,7 @@ class Room
     @playlist = []
     @capacity = capacity
     @entry_fee = 3
+    @total_tab = 0
   end
 
   def count_guests()

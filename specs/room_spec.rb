@@ -37,6 +37,10 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.count_playlist())
   end
 
+  def test_total_tab_is_zero_at_start()
+    assert_equal(0, @room1.total_tab)
+  end
+
   def test_can_get_room_capacity()
     assert_equal(5, @room1.capacity)
   end
@@ -50,13 +54,13 @@ class RoomTest < MiniTest::Test
     assert_equal(5, @room1.entry_fee)
   end
 
-  def test_can_check_guest_into_room()
+  def test_check_guest_into_room_and_charge_entry()
     @room1.check_in_guest(@guest1)
     assert_equal(1, @room1.count_guests())
     assert_equal(12, @guest1.cash)
   end
 
-  def test_can_check_guest_into_room__too_many_guests()
+  def test_check_guest_into_room__too_many_guests()
     @room1.check_in_guest(@guest1)
     @room1.check_in_guest(@guest2)
     @room1.check_in_guest(@guest3)
