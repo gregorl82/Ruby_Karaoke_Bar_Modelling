@@ -86,7 +86,7 @@ class RoomTest < MiniTest::Test
     assert_equal(1, @room1.count_guests())
   end
 
-  # Tests for song related functionality
+  # Tests for song related methods
 
   def test_can_add_song_to_playlist()
     @room1.add_song_to_playlist(@song1)
@@ -99,7 +99,16 @@ class RoomTest < MiniTest::Test
     assert_equal("Woohoo!", output)
   end
 
-  # Tests for functions that modify guest tabs and total_tab
+  def test_filter_playlist_by_artist()
+    @room1.add_song_to_playlist(@song1)
+    @room1.add_song_to_playlist(@song2)
+    @room1.add_song_to_playlist(@song3)
+    @room1.add_song_to_playlist(@song6)
+    output = @room1.filter_playlist_by_artist("Queen")
+    assert_equal([@song2, @song6], output)
+  end
+
+  # Tests for methods that modify guest tabs and total_tab
 
   def test_add_to_guest_tab_by_name()
     @room1.check_in_guest(@guest1)

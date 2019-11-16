@@ -33,14 +33,6 @@ class Room
     @guests.delete(guest)
   end
 
-  def count_playlist()
-    return @playlist.length()
-  end
-
-  def add_song_to_playlist(song)
-    @playlist.push(song)
-  end
-
   def find_guest_by_name(guest_name)
     for guest in @guests
       if guest.name == guest_name
@@ -58,6 +50,18 @@ class Room
     guest_tabs = @guests.map { |guest| guest.tab }
     total = guest_tabs.reduce(0) { |total, tab_value| total + tab_value }
     @total_tab = total
+  end
+
+  def count_playlist()
+    return @playlist.length()
+  end
+
+  def add_song_to_playlist(song)
+    @playlist.push(song)
+  end
+
+  def filter_playlist_by_artist(artist)
+    return @playlist.find_all { |song| song.artist == artist }
   end
 
 #
