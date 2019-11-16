@@ -52,8 +52,8 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room1.entry_fee)
   end
 
-  def test_can_modify_entry_fee()
-    @room1.entry_fee = 5
+  def test_can_change_entry_fee()
+    @room1.change_entry_fee(5)
     assert_equal(5, @room1.entry_fee)
   end
 

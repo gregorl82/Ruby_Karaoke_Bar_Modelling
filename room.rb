@@ -1,8 +1,7 @@
 
 class Room
 
-  attr_reader :room_name, :capacity, :total_tab
-  attr_accessor :entry_fee
+  attr_reader :room_name, :capacity, :total_tab, :entry_fee
 
   def initialize(room_name, capacity)
     @room_name = room_name
@@ -11,6 +10,10 @@ class Room
     @capacity = capacity
     @entry_fee = 3
     @total_tab = 0
+  end
+
+  def change_entry_fee(amount)
+    @entry_fee = amount
   end
 
   def count_guests()
