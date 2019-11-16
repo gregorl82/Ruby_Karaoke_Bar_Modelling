@@ -13,8 +13,12 @@ class Guest
     @cash -= amount
   end
 
+  def enough_cash?(amount)
+    return amount <= @cash
+  end
+
   def add_to_tab(amount)
-    if amount <= @cash
+    if enough_cash?(amount)
       @tab += amount
     else
       return "Not enough cash to cover tab!"
