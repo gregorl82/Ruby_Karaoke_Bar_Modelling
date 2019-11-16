@@ -39,17 +39,6 @@ class GuestTest < MiniTest::Test
     assert_equal(27, @guest.cash)
   end
 
-  def test_add_to_guest_tab()
-    @guest.add_to_tab(5)
-    assert_equal(5, @guest.tab)
-  end
-
-  def test_add_to_guest_tab__not_enough_cash()
-    output = @guest.add_to_tab(31)
-    assert_equal("Not enough cash to cover tab!", output)
-    assert_equal(0, @guest.tab)
-  end
-
   def test_cheer_at_favourite_song()
     output = @guest.cheer_at_favourite_song(@playlist1)
     assert_equal("Woohoo!", output)
@@ -58,6 +47,13 @@ class GuestTest < MiniTest::Test
   def test_cheer_at_favourite_song__wrong_song()
     output = @guest.cheer_at_favourite_song(@playlist2)
     assert_nil(output)
+  end
+
+  def test_settle_tab()
+    @guest.add_to_tab(5)
+    @guest.settle_tab()
+    assert_equal(25, @guest.cash)
+    assert_equal(0, @guest.tab)
   end
 
 end

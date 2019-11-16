@@ -13,16 +13,13 @@ class Guest
     @cash -= amount
   end
 
-  def enough_cash?(amount)
-    return amount <= @cash
+  def add_to_tab(amount)
+    @tab += amount
   end
 
-  def add_to_tab(amount)
-    if enough_cash?(amount)
-      @tab += amount
-    else
-      return "Not enough cash to cover tab!"
-    end
+  def settle_tab()
+    @cash -= @tab
+    @tab = 0
   end
 
   def cheer_at_favourite_song(playlist)
