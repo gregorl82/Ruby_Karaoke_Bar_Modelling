@@ -46,6 +46,11 @@ class Room
     guest.add_to_tab(amount)
   end
 
+  def get_guest_tab(guest_name)
+    guest = find_guest_by_name(guest_name)
+    return guest.tab
+  end
+
   def calculate_total_tab()
     guest_tabs = @guests.map { |guest| guest.tab }
     total = guest_tabs.reduce(0) { |total, tab_value| total + tab_value }

@@ -116,7 +116,14 @@ class RoomTest < MiniTest::Test
     assert_equal(4.5, @guest1.tab)
   end
 
-  def test_return_guest_tab_by_name()
+  def test_get_guest_tab_by_name()
+    @room1.check_in_guest(@guest1)
+    @room1.add_to_guest_tab(3.5, "Ian")
+    output = @room1.get_guest_tab("Ian")
+    assert_equal(3.5, output)
+  end
+
+  def test_update_total_tab_using_guest_tabs()
     @room1.check_in_guest(@guest1)
     @room1.check_in_guest(@guest2)
     @room1.add_to_guest_tab(1.8, "Amy")
