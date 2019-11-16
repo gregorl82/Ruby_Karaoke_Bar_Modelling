@@ -13,6 +13,14 @@ class Guest
     @cash -= amount
   end
 
+  def add_to_tab(amount)
+    if amount <= @cash
+      @tab += amount
+    else
+      return "Not enough cash to cover tab!"
+    end
+  end
+
   def cheer_at_favourite_song(playlist)
     playlist.each do |song|
       if (@favourite_song == song.title)
