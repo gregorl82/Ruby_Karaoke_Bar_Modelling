@@ -27,7 +27,9 @@ class Room
     end
   end
 
-  def check_out_guest(guest)
+  def check_out_guest(guest_name)
+    guest = find_guest_by_name(guest_name)
+    guest.settle_tab()
     @guests.delete(guest)
   end
 

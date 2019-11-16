@@ -82,7 +82,7 @@ class RoomTest < MiniTest::Test
   def test_can_check_guest_out_of_room()
     @room1.check_in_guest(@guest1)
     @room1.check_in_guest(@guest2)
-    @room1.check_out_guest(@guest1)
+    @room1.check_out_guest("Ian")
     assert_equal(1, @room1.count_guests())
   end
 
@@ -114,6 +114,16 @@ class RoomTest < MiniTest::Test
     @room1.add_to_guest_tab(2.2, "Ian")
     @room1.calculate_total_tab()
     assert_equal(4, @room1.total_tab)
+  end
+
+  def test_guest_tab_is_settled_after_checking_out_guest()
+    @room1.check_in_guest(@guest1)
+    @room1.add_to_guest_tab(2, "Ian")
+    @room1.add_to_guest_tab(3.5, "Ian")
+    @room1.check_out_guest("Ian")
+    assert_equal(6.5, @guest1.cash)
+    assert_equal(0, @guest1.tab)
+    assert_equal(0, @room1.total_tab)
   end
 
 end
